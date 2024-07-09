@@ -13,8 +13,14 @@ class Arena {
     startMatch() {
         while (this.playerA.isAlive() && this.playerB.isAlive()) {
             if (this.playerA.health < this.playerB.health) {
+                console.log("Player A has health : ", this.playerA.health)
+                console.log("Player B has health : ", this.playerB.health)
+
                 this.executeTurn(this.playerA, this.playerB);
             } else {
+                console.log("Player A has health : ", this.playerA.health)
+                console.log("Player B has health : ", this.playerB.health)
+                
                 this.executeTurn(this.playerB, this.playerA);
             }
         }
@@ -42,4 +48,4 @@ class Arena {
     }
 }
 
-module.exports = Arena
+module.exports = Arena;
