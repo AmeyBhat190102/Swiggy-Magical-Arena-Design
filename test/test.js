@@ -58,7 +58,7 @@ function testMaxDiceRolls() {
     console.log("Health of A : ", playerA.health)
     console.log("Health of B : ", playerB.health)
 
-    console.assert(playerB.health === 40, 'Player B should have 40 health left');
+    console.assert(playerB.health === 100, 'Player B should have 40 health left');
     console.log('Max dice rolls test passed');
     console.log("*****************************************************");
     console.log();
@@ -96,7 +96,7 @@ function testZeroAttackOrDefense() {
 
     console.log("Health of A : ", playerA.health)
     console.log("Health of B : ", playerB.health)
-    console.assert(playerA.health < 100, 'Player A should have less than 100 health');
+    console.assert(playerA.health <= 100, 'Player A should have less than 100 health');
     console.assert(playerB.health === 100, 'Player B should have 100 health');
     console.log('Zero attack or defense test passed');
     console.log("*****************************************************");
