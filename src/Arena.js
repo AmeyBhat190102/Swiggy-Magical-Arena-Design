@@ -42,4 +42,4 @@ class Arena {
     }
 }
 
-export default Arena;
+module.exports = Arena
