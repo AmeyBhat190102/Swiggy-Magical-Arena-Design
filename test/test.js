@@ -31,6 +31,71 @@ function testEqualAttributesMatch() {
     console.log('Equal attributes match test passed');
 }
 
+function testMaxDiceRolls() {
+    const playerA = new Player(100, 10, 10);
+    const playerB = new Player(100, 10, 10);
+    const arena = new Arena(playerA, playerB);
+
+    const attackRoll = 6;
+    const defendRoll = 6;
+
+    const attackDamage = playerA.attackValue() * attackRoll;
+    const defenseValue = playerB.defendValue() * defendRoll;
+    const netDamage = attackDamage - defenseValue;
+
+    playerB.takeDamage(netDamage > 0 ? netDamage : 0);
+
+    console.assert(playerB.health === 40, 'Player B should have 40 health left');
+    console.log('Max dice rolls test passed');
+}
+
+function testMinDiceRolls() {
+    const playerA = new Player(100, 10, 10);
+    const playerB = new Player(100, 10, 10);
+    const arena = new Arena(playerA, playerB);
+
+    const attackRoll = 1;
+    const defendRoll = 1;
+
+    const attackDamage = playerA.attackValue() * attackRoll;
+    const defenseValue = playerB.defendValue() * defendRoll;
+    const netDamage = attackDamage - defenseValue;
+
+    playerB.takeDamage(netDamage > 0 ? netDamage : 0);
+
+    console.assert(playerB.health === 100, 'Player B should have 100 health left');
+    console.log('Min dice rolls test passed');
+}
+
+function testZeroAttackOrDefense() {
+    const playerA = new Player(100, 10, 0);
+    const playerB = new Player(100, 0, 10);
+    const arena = new Arena(playerA, playerB);
+
+    arena.executeTurn(playerA, playerB);
+    arena.executeTurn(playerB, playerA);
+
+    console.assert(playerA.health < 100, 'Player A should have less than 100 health');
+    console.assert(playerB.health === 100, 'Player B should have 100 health');
+    console.log('Zero attack or defense test passed');
+}
+
+function testIdenticalAttributesProgression() {
+    const playerA = new Player(50, 5, 10);
+    const playerB = new Player(50, 5, 10);
+    const arena = new Arena(playerA, playerB);
+
+    arena.startMatch();
+
+    console.assert(playerA.isAlive() || playerB.isAlive(), 'At least one player should be alive');
+    console.assert(!(playerA.isAlive() && playerB.isAlive()), 'Both players cannot be alive');
+    console.log('Identical attributes progression test passed');
+}
+
 testPlayerCreation();
 testAttackAndDefense();
 testEqualAttributesMatch();
+testIdenticalAttributesProgression();
+testZeroAttackOrDefense();
+testMinDiceRolls();
+testMaxDiceRolls();
