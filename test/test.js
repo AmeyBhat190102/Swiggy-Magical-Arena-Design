@@ -19,18 +19,18 @@ function testAttackAndDefense() {
     console.log('Attack and defense test passed');
 }
 
-function testMatchOutcome() {
-    const playerA = new Player(1, 1, 1);
-    const playerB = new Player(100, 10, 10);
+function testEqualAttributesMatch() {
+    const playerA = new Player(50, 5, 10);
+    const playerB = new Player(50, 5, 10);
     const arena = new Arena(playerA, playerB);
 
     arena.startMatch();
 
-    console.assert(!playerA.isAlive(), 'Player A should be dead');
-    console.assert(playerB.isAlive(), 'Player B should be alive');
-    console.log('Match outcome test passed');
+    console.assert(playerA.isAlive() || playerB.isAlive(), 'At least one player should be alive');
+    console.assert(!(playerA.isAlive() && playerB.isAlive()), 'Both players cannot be alive');
+    console.log('Equal attributes match test passed');
 }
 
 testPlayerCreation();
 testAttackAndDefense();
-// testMatchOutcome();
+testEqualAttributesMatch();
