@@ -55,6 +55,9 @@ function testMaxDiceRolls() {
 
     playerB.takeDamage(netDamage > 0 ? netDamage : 0);
 
+    print("Health of A : ", playerA.health)
+    print("Health of B : ", playerB.health)
+
     console.assert(playerB.health === 40, 'Player B should have 40 health left');
     console.log('Max dice rolls test passed');
     console.log("*****************************************************");
@@ -91,6 +94,8 @@ function testZeroAttackOrDefense() {
     arena.executeTurn(playerA, playerB);
     arena.executeTurn(playerB, playerA);
 
+    print("Health of A : ", playerA.health)
+    print("Health of B : ", playerB.health)
     console.assert(playerA.health < 100, 'Player A should have less than 100 health');
     console.assert(playerB.health === 100, 'Player B should have 100 health');
     console.log('Zero attack or defense test passed');
