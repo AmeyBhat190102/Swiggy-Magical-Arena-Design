@@ -13,16 +13,23 @@ class Arena {
     startMatch() {
         while (this.playerA.isAlive() && this.playerB.isAlive()) {
             if (this.playerA.health < this.playerB.health) {
-                console.log("Player A has health : ", this.playerA.health)
-                console.log("Player B has health : ", this.playerB.health)
+                console.log("Player A has health before turn : ", this.playerA.health)
+                console.log("Player B has health before turn : ", this.playerB.health)
 
                 this.executeTurn(this.playerA, this.playerB);
+
+                console.log("Player A has health after turn : ", this.playerA.health)
+                console.log("Player B has health after turn : ", this.playerB.health)
             } else {
-                console.log("Player A has health : ", this.playerA.health)
-                console.log("Player B has health : ", this.playerB.health)
-                
+                console.log("Player A has health before turn : ", this.playerA.health)
+                console.log("Player B has health before turn : ", this.playerB.health)
+
                 this.executeTurn(this.playerB, this.playerA);
+
+                console.log("Player A has health after turn : ", this.playerA.health)
+                console.log("Player B has health after turn : ", this.playerB.health)
             }
+            console.log("**************************")
         }
         this.determineWinner();
     }
