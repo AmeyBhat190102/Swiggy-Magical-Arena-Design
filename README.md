@@ -22,6 +22,13 @@ The game continues until one player's health reaches 0.
 
 ## Solution Overview
 
+### Files
+
+- `src/Player.js`: Defines the `Player` class with attributes and methods for taking damage, checking if the player is alive, and calculating attack and defense values.
+- `src/Arena.js`: Defines the `Arena` class that handles the game logic, including dice rolls, executing turns, and determining the winner.
+- `src/index.js`: Entry point to run the game simulation.
+- `test/test.js`: Contains the unit tests to validate the game logic.
+
 ### Implementation Details
 
 The solution is implemented using Node.js with the following structure:
